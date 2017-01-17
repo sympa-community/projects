@@ -1,42 +1,42 @@
 # Sympa ideas
 
 Sympa is much more than a mailing list manager: it comes with a very rich web
-interface allowing non-technical persons to create and customize working groups
+interface allowing non-technical people to create and customize working groups
 of people and allow them to communicate, share documents, get complete archives,
-create homepages and wikis and much more.
+create homepages, wikis and much more.
 
 Sympa is also a very fast and robust system to send loads of mails with the state
-of art of SMTP standards (DMARC, DKIM,...).
+of art of SMTP standards (DMARC, DKIM, ...).
 
-However, the project is quiet old now (22 years) and need some features to be
+However, the project is quite old now (22 years) and need some features to be
 refactored.
 
 According to my understanding of the sympa code and the Perl ecosystem, a
-lot of homebrew code should be whether
+lot of homebrew code should be either
 
 * replaced by external tools
 * published as external tools
 
 (mostly CPAN distributions)
 
-this page is my personnal list of main goals to make Sympa modern again.
+This page is my personnal list of main goals to make Sympa modern again.
 
-## A responsive html5 UI for sympa
+## A responsive HTML5 UI for sympa
 
 ### short description
 
 Some very powerful features of sympa are hidden by the web interface wich is
-unattractive and uneasy to use. we need to change this.
+unattractive and uneasy to use. We need to change this.
 
 ### long description
 
-* sketch a new interface that should be much dynamic and easier to use.
+* sketch a new interface that should be more dynamic and easier to use.
   * It MUST be
     * at least isofunctional
     * a11y compliant
     * responsive
   * It MUST implement
-    * merge the archive, send/resend, shared documents in a single page
+    * merge the archives, send/resend, shared documents in a single page
       so users can contribute to their workgroups without using the mails
   * It COULD implement
     * simplified admin pages
@@ -49,7 +49,7 @@ unattractive and uneasy to use. we need to change this.
 
 ### expected outcome
 
-modernize the UI is crucial to make sympa attractive for newcommers
+Modernize the UI is crucial to make sympa attractive for newcommers
 and experimented users.
 
 ### required skills
@@ -64,7 +64,7 @@ UX, design principles, a11y and modern web stack technologies (html5, js, CSS)
 
 ### short description
 
-use Plack instead of any homebrew code, delete the old code.
+Use Plack instead of any homebrew code, delete the old code.
 
 ### long description
 
@@ -111,24 +111,24 @@ Perl, Job queueing, documentation and packaging
 
 ## Make the scenarii run everywhere and better
 
-Scenaries are one of the key features that makes sympa a much more superior mailing list manager,
-it gives non-technical persons to define exactly what to do when a message is
+Scenaries are one of the key features that makes sympa a much superior mailing list manager,
+it gives non-technical people a way to define exactly what to do when a message is
 received, a document is shared and so on.
 
-But ...
+But...
 
 * there are a lot of actions that can't take avantage of them
 * they are not exendable in Perl
 * they can be hard to test
 * they cannot be chained
 
-Refactor the whole Action/Scenarii mechanism to give them the power they deserve.
+Refactor the whole Action/Scenarii mechanism to give them the power they deserve
 (maybe inspired by the Request Tracker Scrip system).
 
 ### expected outcome
 
 * give more power to experimented non-technical users
-* make sympa even more easier to tune
+* make sympa even easier to tweak
 
 ### required skills
 
