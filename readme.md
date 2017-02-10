@@ -138,3 +138,14 @@ Perl, software design, documentation and packaging
 
 * Marc Chantreux
 
+## Processing of bounces
+
+Processing of bounces isn't only interesting for Sympa but also for all kind of web applications
+sending out emails to users respective customers.
+
+We can try to factor that part out of Sympa into a separate module and/or take a look at
+[Sisimai](http://libsisimai.org/en/).
+
+### suggested by
+
+* Stefan Hornburg (Racke)
