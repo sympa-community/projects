@@ -1,3 +1,14 @@
+# Read before edit
+
+This document will be reviewed by google for the summer of code. If you add
+task/idea, please be sure it will contain those subsections
+
+* short description
+* long description
+* expected outcome
+* required skills
+* possible mentor
+
 # Sympa ideas
 
 Sympa is much more than a mailing list manager: it comes with a very rich web
@@ -140,12 +151,33 @@ Perl, software design, documentation and packaging
 
 ## Processing of bounces
 
+### short description
+
+CPAN at the rescue to give a better error report to the users
+
+### long description
+
+
 Processing of bounces isn't only interesting for Sympa but also for all kind of web applications
 sending out emails to users respective customers.
 
 We can try to factor that part out of Sympa into a separate module and/or take a look at
 [Sisimai](http://libsisimai.org/en/).
 
+### expected outcome
+
+the scoring and alert system to maintain large lists could be much more helpfull than
+the current log.
+
+### required skills
+
+Perl, knowledge of SMTP bouncing
+
+### possible mentor
+
+* Stefan Hornburg (Racke)
+
 ### suggested by
 
 * Stefan Hornburg (Racke)
+
