@@ -1,21 +1,48 @@
 # this should serve as todo list
 
-since we don't have a tool for now, maybe a single
-file should help.
+Helping us to run endless list of tasks will let developpers more time
+to focus on the code. so please
+
+* read this document
+* ask any question about it on sympa-users or sympa-fr mailing lists
+* pick a task and let us know
+* if you're stuck, let us know how we can help you back
 
 # communication
 
-due 02/20
-    * announce irc channel on sympa-users
-    * announce the hackathon on sympa-developpers
-    * announce the sympa meetup at JP'17
-
 due 02/27
-    * announce the google summer of code
+    * announce the google summer of code (eiro.o/)
 
-# documentation
+due 03/02
+    * w/o RENATER to show up: start the scraping of all data (eiro.o/)
 
-* translate the wiki to a gited pandoc (git-book?)
+due 03/03
+    * "Sympa in 20mn" talk to the IT department of Strasbourg (eiro.o/)
+
+ASAP
+    * sympa meetup at JP'17?
+    * CfP JP'17?
+    * [CfP RMLL](https://2017.rmll.info/cfp/talk/new)
+    * [CfP JRES](https://www.jres.org/en/call-proposals)
+    * [CfP perl conference](http://act.perlconference.org/tpc-2017-amsterdam/call-for-papers.html)
+
+* setup a new website (ask strasweb?) (t0mab.o?, caswitch.o?)
+
+# IS intregration
+
+* curration of the [sympa contrib page](http://www.sympa.org/contribs/index):
+  create updated repos of every relevent pluggins we should/can support
+* sympa spore spec
+* as we should remove the "content part" of sympa, farming/driving
+  CMS, wikis or Blogs is much more relevant (explore [pft](https://www.staticgen.com/pft),
+  ikiwiki, [drapper](https://www.staticgen.com/dapper),
+  [statocles](http://preaction.me/statocles/), [webgui](https://www.webgui.org/home)
+  [twiki](http://twiki.org/), ...)
+
+# documentation/translation
+
+* translate the current documentation to a git-book/pandoc thing
+* setup a pootle? no idea what to do there ...
 * start writing guides or other tutorial support for
     * administrator
     * listmaster
@@ -25,11 +52,7 @@ due 02/27
     * translator
     * developper/contributors
 
-# enlist new contributors
-
-Helping us to run those endless tasks will let developpers more time
-to focus on the code. so please do your best and ask us if you're stuck
-at some point
+# community
 
 * blog about sympa (in any language, for anything worth to share)
 
@@ -39,13 +62,12 @@ at some point
 
 * provide support on the sympa-users mailing list
 
-* run greet hackathons and meetings including
-  * finding venues
+* help us to run hackathons and meetings
+  * find venues
   * organize, invite
   * spread the world using blogs, mailing lists and social networks
 
 * run betas and give us feebacks
-
   any kind of feedback (UX, install and run, perfs, ...)
 
 * translate
@@ -57,18 +79,3 @@ at some point
 
   cash should help to organize events (trainings, hackathons, ...)
   as well as running servers for the project.
-
-# Technical roadmap (the way eiro see it)
-
-Primary targets:
-
-* material UX
-    * sketching (WIP)
-    * show proposal to the community (due april 1?)
-    * implement a Dancer2 abstraction over sympa
-
-* deployable developpement/test stack
-    * pick a techno (docker? vagrant? rexify?)
-    * make it work
-    * choose/code a system do get complete smtp scenarii tests
-
