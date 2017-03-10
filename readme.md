@@ -181,3 +181,32 @@ Perl, knowledge of SMTP bouncing
 
 * Stefan Hornburg (Racke)
 
+
+## LMTP interface
+
+### short description
+
+LMTP interface submitting messages to Sympa
+
+### long description
+
+LMTP (Local Mail Transfer Protocol) is a protocol focuses on local message delivery.  As it is extension of SMTP, it can inform result to MTA before processing is completed, due to such as non-existing lists, unauthorized posts.  And it is easy to integrate into existing mail system.
+
+Some modules such as [Net::Server::Mail::LMTP](https://search.cpan.org/dist/Net-Server-Mail) may help implementing it.
+
+### expected outcome
+
+* No need of aliases maintenance.
+
+* Less backscattering.
+
+* Widely available interface between MTA.
+
+### required skills
+
+Perl, knowledge of LMTP
+
+### possible mentor
+
+* IKEDA Soji (ikedas)
+
