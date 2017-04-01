@@ -10,23 +10,13 @@ to focus on the code. so please
 
 # communication
 
-due 02/27
-    * announce the google summer of code (eiro.o/)
-
-due 03/02
-    * w/o RENATER to show up: start the scraping of all data (eiro.o/)
-
-due 03/03
-    * "Sympa in 20mn" talk to the IT department of Strasbourg (eiro.o/)
-
 ASAP
     * sympa meetup at JP'17?
     * CfP JP'17?
     * [CfP RMLL](https://2017.rmll.info/cfp/talk/new)
     * [CfP JRES](https://www.jres.org/en/call-proposals)
     * [CfP perl conference](http://act.perlconference.org/tpc-2017-amsterdam/call-for-papers.html)
-
-* setup a new website (ask strasweb?) (t0mab.o?, caswitch.o?)
+    * [CfP Fosdem](https://fosdem.org/2017/)
 
 # IS intregration
 
