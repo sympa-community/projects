@@ -61,10 +61,9 @@ Nous repartons de zero pour utiliser l'état de l'art du devéloppement d'interf
 en nous basant sur le framework [vue](https://vuejs.org/) et les
 recommendations de google en terme de responsivness et de material design.
 
-Au passage, nous en avons profité pour initier l'idée d'agrégation discutée de
-longue date avec les utilisateurs de sympa: toutes les listes de tous les
-serveurs seront disponibles via la même interface web (si l'utilisateur le
-souhaite).
+Au passage, nous en avons profité pour initier l'idée d'agrégation:
+toutes les listes de tous les serveurs seront disponibles via la même interface
+web (si l'utilisateur le souhaite).
 
 vous pouvez contribuer au [code](https://github.com/sympa-community/sympa-vue/)
 ou à la [maquette](https://github.com/sympa-community/sympa-design)
