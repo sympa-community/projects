@@ -1,6 +1,7 @@
 % Compte-Rendu du "20th birthday hackathon"
 
-les décisions suivantes ont été prises avant et pendant le hackathon.
+Ce hackathon avait pour but de relancer le développement de sympa sur la base d'une grande mise
+à jour. les fonctionnalités de sympa et son fonctionnement restent les mêmes mais le coeur et l'interface graphique sont entièrement revues pour refleter l'état de l'art en terme de développement, déploiement et experience utilisateur.
 
 # Hebergement des dépots
 
@@ -12,6 +13,37 @@ des que ce dernier proposera un service de qualité au moins équivalent par
 rapport aux besoins du projet (runners macos pour l'intégration continue par
 exemple).
 
+# Nouvelle terminologie
+
+L'intégralité des services qui sont proposés par sympa autour des listes de
+diffusion font qu'il serait réducteur d'en parler encore comme un simple
+service de listes de diffusion. Les utilisateurs eux-même envisagent ces listes
+comme des "groupes de travail". De plus, personne ne comprend vraiment ce qu'est un robot
+(l'ensemble des groupes associés à un domaine internet), nous préférons donc
+parler de communautés (terme mieux compris par les utilisateurs).
+
+# sympa-vue: Nouvelle interface web pour sympa
+
+L'idée fondatrice de la relance du développement de sympa, c'est une nouvelle interface web
+qui fusionne les fonctionnalités actuelles de "publications", "archives" et
+"documents partagés" au sein d'une même page qui permettera de rendre les
+listes de diffusions exploitables sous la forme d'un forum web.
+
+Nous repartons de zero pour utiliser l'état de l'art du devéloppement d'interfaces web
+en nous basant sur le framework [vue](https://vuejs.org/) et les
+recommendations de google en terme de responsivness et de material design.
+
+Au passage, nous en avons profité pour initier l'idée d'agrégation discutée de
+longue date avec les utilisateurs de sympa: toutes les listes de tous les
+serveurs seront disponibles via la même interface web (si l'utilisateur le
+souhaite).
+
+vous pouvez contribuer au [code](https://github.com/sympa-community/sympa-vue/)
+ou à la [maquette](https://github.com/sympa-community/sympa-design)
+(en utilisant le logiciel propriétaire sketch sous macos, malheureusement ...)
+ou vous rendre compte de l'avancement du projet en visualisant le
+[rendu en ligne](http://sympa-vue.surge.sh/).
+
 # Modularisation
 
 Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont été retenues
@@ -19,7 +51,6 @@ Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont ét�
 * les parties fonctionnellement indépendantes vivent dans des dépots séparés.
   Ainsi, il sera possible d'installer le gestionnaire de liste sans l'interface
   web ou le serveur soap. les dépots sont décrits dans la section suivante.
-
 
 * les données métier relatives au gestionnaire de listes
   seront stockées dans la base de données
@@ -32,29 +63,51 @@ Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont ét�
   (les fichiers de configuration, par exemple, deviennent des sources externes).
   Les fournisseurs de données seront disponibles sous la forme de modules CPAN.
 
-# Dépots créés
+# Pratiques de développement
+
+## disparition d'autoconf dans les bibliothèques perl
+
+La règle (qui pourra trouver des exceptions si besoin) est désormais de faire
+confiance aux administrateurs systèmes et mainteneurs de paquets pour indiquer
+les chemins des bibliothèques perl (via `PERL5LIB` et `-I`). Cette pratique
+
+* est répandue de longue date dans les communautés des langages dynamiques
+  (cf [local::lib](https://metacpan.org/pod/local::lib) en perl, `virtualenv` en python, ...)
+* simplifie le processus de développement
+* rend l'installation de sympa plus souple
+
+En pratique, l'utilisation de autoconf et de `Find::Bin` est donc à proscrire
+dans les modules.
+
+## Utilisation de [Moo](https://metacpan.org/pod/Moo) pour la déclaration des classes
+
+## Renforcement du coding style
+
+
+
+`Sympa.pm` will import some strictness and helpers into your code so
+
+    use Sympa;
+
+
+# intégration à YUNoHost
+
+Grace à l'intégration de sympa dans YUNoHost, créer une instance de sympa pour
+auto-heberger ses listes devrait se résumer à un simple click. Nous esperons beaucoup de la combinaison de cette fonctionnalité avec la capacité qu'aura sympa-vue à créer la listes de groupes d
+
+l'intégration de sympa-vue.
 
 
 
 
-# Coding style
-
-le préprocessing des fichiers perl pour inserer en dur les répertoires ou les
-modules sont stockés est abandonné: c'est l'administrateur du système (ou le
-mainteneur du package) qui s'assure désormais que les modules de sympa sont
-présents dans @INC.
-
-* les fichiers de configuration deviennent une source externes qui pourront
-  ne pas être installé
-
-  Des sources de données externes pourront être utilisées pour synchroniser des
-  données 
+`Sympa.pm` will import some strictness and helpers into your code so
 
 
-
-
-* les fichiers de configuration seront gérés comme source de données
-
+    use feature  ':5.16';
+    use strict   ();
+    use warnings ();
+    use Function::Parameters;
+    use Sympa::Constants;
 
 
 
