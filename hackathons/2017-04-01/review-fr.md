@@ -44,11 +44,12 @@ rythme de développement.
 
 L'intégralité des services qui sont proposés par sympa autour des listes de
 diffusion font qu'il serait réducteur d'en parler encore comme un simple
-service de listes de diffusion. Les utilisateurs eux-même envisagent ces listes.
-
-comme des "groupes de travail". De plus, personne ne comprend vraiment ce qu'est un robot
-(l'ensemble des groupes associés à un domaine internet), nous préférons donc
-parler de communautés (terme mieux compris par les utilisateurs).
+service de listes de diffusion. Sauf cas spécifiques (comme les adresses de
+contact ou lettres d'information), les listes de diffusion sont le support
+de communication de groupes de travail. De plus, personne ne comprend vraiment
+ce qu'est un robot (l'ensemble des groupes associés à un domaine internet),
+nous préférons donc parler de communautés (terme mieux compris par les
+utilisateurs).
 
 # sympa-vue: Nouvelle interface web pour sympa
 
@@ -86,8 +87,7 @@ Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont ét�
   Ainsi, il sera possible d'installer le gestionnaire de liste sans l'interface
   web ou le serveur soap. les dépots sont décrits dans la section suivante.
 
-* les données métier relatives au gestionnaire de listes
-  seront stockées dans la base de données
+* les données autres que l'état des queues de travail seront stockées dans la base de données
   qui fera référence. Le schema de la base de données sera décrit et exploité par l'ORM
   [DBIx::Class](https://metacpan.org/pod/DBIx::Class) et sera maintenu dans le dépot
   [sympa-schema](https://github.com/sympa-community/sympa-schema).
@@ -107,13 +107,14 @@ Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont ét�
 
 ## Perl 5.16 est requis pour les versions superieures à 6.2.x
 
-perl 5.20 est  excellent cru. toutefois nous ne souhaitons pas mettre les
+perl 5.20 est excellent cru. Toutefois nous ne souhaitons pas mettre les
 administrateurs de sites de sympa dans l'embarras. Au vue des versions présentes
 dans la RHEL current et dans la prochaine LTS de debian, 5.16 est un compromis
 acceptable pour tous.
 
 Si vous êtes responsable d'un service informatique et que cette nouvelle vous
 fait froid dans le dos, n'hésitez pas à nous contacter.
+
 
 ## disparition d'autoconf dans les bibliothèques perl
 
