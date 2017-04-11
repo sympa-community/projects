@@ -1,7 +1,10 @@
 % Compte-Rendu du "20th birthday hackathon"
 
-Ce hackathon avait pour but de relancer le développement de sympa sur la base d'une grande mise
-à jour. les fonctionnalités de sympa et son fonctionnement restent les mêmes mais le coeur et l'interface graphique sont entièrement revues pour refleter l'état de l'art en terme de développement, déploiement et experience utilisateur.
+Ce hackathon avait pour but de relancer le développement de sympa sur la base
+d'une grande mise à jour. les fonctionnalités de sympa et son fonctionnement
+restent les mêmes mais le coeur et l'interface graphique sont entièrement
+revues pour refleter l'état de l'art en terme de développement, déploiement et
+experience utilisateur.
 
 # Hebergement des dépots
 
@@ -13,11 +16,36 @@ des que ce dernier proposera un service de qualité au moins équivalent par
 rapport aux besoins du projet (runners macos pour l'intégration continue par
 exemple).
 
+# Prochaines versions de sympa
+
+Les prochaines versions de sympa 6.2 seront maintenant maintenues par Soji
+Ikeda avec l'aide de la communauté. Elles ne feront l'objet que de corrections.
+
+Pour les versions suivantes, la séparation des fonctionnalités de sympa en
+produits permettra probablement de produire des mises à jour plus rapidement.
+Ces modules utiliseront la stratégie de numérotation et de gestion de
+fonctionnalités de Perl. A savoir:
+
+    major.minor.patchlevel
+
+* Les versions majeures impaires (7.x, 9.x, ...) seront des versions avec des
+cycles de vie court qui permettront de pouvoir bénéficier des dernières experimentations.
+
+* Les versions majeures paires (8.x, 10.x) seront des versions plus
+  conservatives et donc adaptées aux sites ayant de larges bases d'utilisateur.
+
+les versions mineures correspondent aux ajouts fonctionnelles et le patchlevel
+est réservé aux corrections.
+
+Soji souhaite voir une nouvelle version majeure tous les ans. tout dépendra du
+rythme de développement.
+
 # Nouvelle terminologie
 
 L'intégralité des services qui sont proposés par sympa autour des listes de
 diffusion font qu'il serait réducteur d'en parler encore comme un simple
-service de listes de diffusion. Les utilisateurs eux-même envisagent ces listes
+service de listes de diffusion. Les utilisateurs eux-même envisagent ces listes.
+
 comme des "groupes de travail". De plus, personne ne comprend vraiment ce qu'est un robot
 (l'ensemble des groupes associés à un domaine internet), nous préférons donc
 parler de communautés (terme mieux compris par les utilisateurs).
@@ -44,6 +72,13 @@ ou à la [maquette](https://github.com/sympa-community/sympa-design)
 ou vous rendre compte de l'avancement du projet en visualisant le
 [rendu en ligne](http://sympa-vue.surge.sh/).
 
+# intégration à YUNoHost
+
+Grace à l'intégration de sympa dans YUNoHost, créer une instance de sympa pour
+auto-heberger ses listes devrait se résumer à un simple click. Nous esperons
+beaucoup de la combinaison de cette fonctionnalité avec la capacité qu'aura
+sympa-vue à créer la listes de groupes.
+
 # Modularisation
 
 Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont été retenues
@@ -63,7 +98,23 @@ Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont ét�
   (les fichiers de configuration, par exemple, deviennent des sources externes).
   Les fournisseurs de données seront disponibles sous la forme de modules CPAN.
 
+* sympa devrait être facilement scriptable en Perl grace à une API clarifiée,
+  testée et documentée. Cette API sera possiblement exposée par un [serveur
+  REST](https://github.com/sympa-community/sympa-service-rest) dont les routes
+  seront décrites par une
+  [specification OpenAPI](https://github.com/sympa-community/sympa-spec-openapi).
+
 # Pratiques de développement
+
+## Perl 5.16 est requis pour les versions superieures à 6.2.x
+
+perl 5.20 est  excellent cru. toutefois nous ne souhaitons pas mettre les
+administrateurs de sites de sympa dans l'embarras. Au vue des versions présentes
+dans la RHEL current et dans la prochaine LTS de debian, 5.16 est un compromis
+acceptable pour tous.
+
+Si vous êtes responsable d'un service informatique et que cette nouvelle vous
+fait froid dans le dos, n'hésitez pas à nous contacter.
 
 ## disparition d'autoconf dans les bibliothèques perl
 
@@ -79,146 +130,49 @@ les chemins des bibliothèques perl (via `PERL5LIB` et `-I`). Cette pratique
 En pratique, l'utilisation de autoconf et de `Find::Bin` est donc à proscrire
 dans les modules.
 
-## Utilisation de [Moo](https://metacpan.org/pod/Moo) pour la déclaration des classes
+## renforcement des pratiques de developpement communes
 
-## Renforcement du coding style
+Outre l'utilisation du framework [Moo](https://metacpan.org/pod/Moo)
+pour la déclaration des classes d'objet, les strictures seront imposées
+et l'utilisation de
+[Function::Parameters](https://metacpan.org/pod/Function::Parameters) recommandée.
 
-
-
-`Sympa.pm` will import some strictness and helpers into your code so
+Afin d'éviter un alourdissement du "boilerplate", ces imports seront effectués
+automatiquement par `Sympa.pm`.
 
     use Sympa;
 
-
-# intégration à YUNoHost
-
-Grace à l'intégration de sympa dans YUNoHost, créer une instance de sympa pour
-auto-heberger ses listes devrait se résumer à un simple click. Nous esperons beaucoup de la combinaison de cette fonctionnalité avec la capacité qu'aura sympa-vue à créer la listes de groupes d
-
-l'intégration de sympa-vue.
-
-
-
-
-`Sympa.pm` will import some strictness and helpers into your code so
-
+serait donc l'équivalent de
 
     use feature  ':5.16';
     use strict   ();
     use warnings ();
     use Function::Parameters;
+
+TODO: i don't know about
+
     use Sympa::Constants;
 
+TODO: i think Sympa.pm is the good name but it could be a bad idea for
+technical reasons ? how about Sympatic.pm ? Sympatic should be pushed as it on
+cpan (not only for sympa purposes ?)
 
+## meilleure participation à la vie du CPAN
 
-  Le schéma de la base sera maintenu avec un ORM
-  (DBIx::Class en l'occurence)
+Réutiliser CPAN au maximum, c'est s'éviter de la maintenance de code
+(correction, optimisation, amélioration, ...) mais aussi de la documentation,
+des tests, des ports, du packaging. Sympa doit reposer au maximum sur des
+modules externes et les contributeurs de sympa sont invités à faire évoluer
+leurs modules directement sur le CPAN.
 
+## Assurance qualité
 
+Des batteries de tests unitaires seront mises en place dans toutes les parties de sympa. L'intégration continue sera activée sur tous les projets et ne sera déversé dans master que du code n'ayant produit aucune erreur. Pour le reste, l'assurance qualité est une responsabilité collective et la revue de code est encouragée.
 
-toutes les informations relatives au mlm seront stockées en base de données
-  maintenue
+# Environements virtuels d'experiementation
 
-
-
-
-## modularisation
-
-La distribution de sympa se fait sous la forme d'une seule archive proposant
-le serveur de listes lui-même et divers composants comme une interface web,
-un serveur soap, des outils d'administration.
-
-Ces outils ne sont pas utilisés de manière homogène par la communauté et
-la maintenance de la totalité de la collection logicielle nécessite 
-
-
-manque de granularité est un frein à l'évolution, l'adoption, l'intégration
-dans les systèmes d'information et finalement l'installation.
-
-Un frein à l'évolution parceque les usages de sympa sont très différents et
-et qu'une modification dans le moteur de sympa entraine possiblement des
-modifications dans les composants. Notre idée est de maintenir
-
-* un schema (système de stockage des informations dans un gestionnaire de bases de données)
-  utilisant l'[ORM](https://en.wikipedia.org/wiki/Object-relational_mapping)
-  [DBIx::Class](https://metacpan.org/pod/DBIx::Class) et des sources externes permettant
-  d'y synchroniser de manière configurable des informations.
-
-  de synchroniser des informations
-  * qui contiendrait désormais l'intégralité des informations nécessaires à sympa
-    serait défini et exploité via
-
-  métier de sympa et sur lequel
-  pouront se greffer des sources externes
-
-
-* des connecteurs pour les sources de données externes comme par exemple
-  * les fichiers plats de configuration, scenarii, ...
-  * les sources d'abonnés
-
-
-* un gestionnaire de listes de diffusion (envoi et réception et traitement
-  des messages relatifs au publipostage et aux listes de diffusion)
-
-
-
-Nous souhaitons découper sympa en plusieur composants logiciels qui interagiront entre eux
-
-### schema
-
-e
-
-
-### sympa-mlm (mailing list manager)
-
-intégrera les fonctions de diffusion de messages, de publipostage, de scenarii 
-
-
-intègrera les
-
-
-
-
-
-
-Pour les architectes des systèmes d'information, c'est la possibilité d'identifier
-
-
-
-
-Si nous conservons cette unique archive comme moyen de distribution, nous
-seront obligé d'attendre que tous ces composants soient prêts
-
-
-
-
-
-### pour les administrateurs de site
-
-Sympa repose sur de nombreux modules et son installation n'est pas aisée. Une par
-
-Sympa est compliqué à installer et une grande partie de l'effort fourni le sera
-pour
-
-
-
-est le simple fruit de l'histoire de sympa qui a grandit
-organiquement dans un seul dépot 
-
-
-* il complique le travail des packq
-
-
-## simplification de l'installation
-
-Pour le moment, sympa est un logiciel monolithique fou
-
-## économie autour de sympa
-##
-
-# La base de code et le boilerplate
-
-
+Avoir des environements virtuels avec des sympa prets a l'emploi pourrait simplifier
+le travail des administrateurs et des développeurs. Des experimentations ont été menés avec KVM, docker et lxc.
 
 
 
