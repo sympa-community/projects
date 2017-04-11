@@ -167,12 +167,14 @@ leurs modules directement sur le CPAN.
 
 ## Assurance qualité
 
-Des batteries de tests unitaires seront mises en place dans toutes les parties de sympa. L'intégration continue sera activée sur tous les projets et ne sera déversé dans master que du code n'ayant produit aucune erreur. Pour le reste, l'assurance qualité est une responsabilité collective et la revue de code est encouragée.
+Des batteries de tests unitaires seront mises en place dans toutes les parties
+de sympa. L'intégration continue sera activée sur tous les projets et ne sera
+déversé dans master que du code n'ayant produit aucune erreur. Pour le reste,
+l'assurance qualité est une responsabilité collective et la revue de code est
+encouragée.
 
 # Environements virtuels d'experiementation
 
-Avoir des environements virtuels avec des sympa prets a l'emploi pourrait simplifier
-le travail des administrateurs et des développeurs. Des experimentations ont été menés avec KVM, docker et lxc.
-
-
-
+Avoir des environements virtuels avec des sympa prets a l'emploi pourrait
+simplifier le travail des administrateurs et des développeurs. Des
+experimentations ont été menés avec KVM, docker et lxc.
