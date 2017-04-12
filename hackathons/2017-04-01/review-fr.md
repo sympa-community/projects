@@ -18,8 +18,10 @@ exemple).
 
 # Prochaines versions de sympa
 
+La prochaine version de sympa (6.2.17) est programmée pour le 25 juin.
 Les prochaines versions de sympa 6.2 seront maintenant maintenues par Soji
-Ikeda avec l'aide de la communauté. Elles ne feront l'objet que de corrections.
+Ikeda (qui annonce sympa 6.2.17 pour le 25 juin) avec l'aide de la communauté.
+Elles ne feront l'objet que de corrections.
 
 Pour les versions suivantes, la séparation des fonctionnalités de sympa en
 produits permettra probablement de produire des mises à jour plus rapidement.
@@ -28,17 +30,15 @@ fonctionnalités de Perl. A savoir:
 
     major.minor.patchlevel
 
-* Les versions majeures impaires (7.x, 9.x, ...) seront des versions avec des
-cycles de vie court qui permettront de pouvoir bénéficier des dernières experimentations.
+* Les versions majeures impaires (7.x, 9.x, ...) seront publiées des que de
+  nouvelles fonctionnalités sont prêtes (branche "master")
 
-* Les versions majeures paires (8.x, 10.x) seront des versions plus
-  conservatives et donc adaptées aux sites ayant de larges bases d'utilisateur.
+* Les versions majeures paires (8.x, 10.x) seront des versions jugées abouties
+  de la branche master qui seront publiées plus rarement (Soji en aimerait
+  une par an) avec des fonctionalités plus stables dans le temps.
 
 les versions mineures correspondent aux ajouts fonctionnelles et le patchlevel
 est réservé aux corrections.
-
-Soji souhaite voir une nouvelle version majeure tous les ans. tout dépendra du
-rythme de développement.
 
 # Nouvelle terminologie
 
@@ -74,6 +74,10 @@ ou vous rendre compte de l'avancement du projet en visualisant le
 
 # intégration à YUNoHost
 
+Créer une communauté sympa se fera en quelques clicks si vous vous
+auto-herbergez avec YUNoHost. La combinaison avec la sympa-vue nous semble ouvrir
+des perspectives intéressantes.
+
 Grace à l'intégration de sympa dans YUNoHost, créer une instance de sympa pour
 auto-heberger ses listes devrait se résumer à un simple click. Nous esperons
 beaucoup de la combinaison de cette fonctionnalité avec la capacité qu'aura
@@ -81,19 +85,23 @@ sympa-vue à créer la listes de groupes.
 
 # Modularisation
 
-Pour clarifier et faciliter l'évolution de sympa, les idées suivantes ont été retenues
+Pour clarifier et faciliter l'évolution de sympa, nous le réorganiserons comme suit
 
 * les parties fonctionnellement indépendantes vivent dans des dépots séparés.
   Ainsi, il sera possible d'installer le gestionnaire de liste sans l'interface
-  web ou le serveur soap. les dépots sont décrits dans la section suivante.
+  web ou le serveur soap.
 
-* les données autres que l'état des queues de travail seront stockées dans la base de données
-  qui fera référence. Le schema de la base de données sera décrit et exploité par l'ORM
-  [DBIx::Class](https://metacpan.org/pod/DBIx::Class) et sera maintenu dans le dépot
-  [sympa-schema](https://github.com/sympa-community/sympa-schema).
+* Des qu'elle est un lieu de stockage pertinent (exception faite, donc, des
+  documents partagés, spoolers et archives), les données seront stockées dans
+  la base de données qui fera référence. L'ORM
+  [DBIx::Class](https://metacpan.org/pod/DBIx::Class) sera utilisé pour décrire
+  le schema ([sympa-schema](https://github.com/sympa-community/sympa-schema)).
 
 * sympa offre déjà la possibilité de mettre les données du schéma à jour
-  via des sources externes paramètrables. Ce fonctionnement sera généralisé
+  via des sources externes paramètrables.
+
+  
+  Ce fonctionnement sera généralisé
   (les fichiers de configuration, par exemple, deviennent des sources externes).
   Les fournisseurs de données seront disponibles sous la forme de modules CPAN.
 
