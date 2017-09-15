@@ -1,6 +1,6 @@
 # Sympa Functionalities
 
-##authentication
+## Authentication
 
 ### native
 email/password
@@ -42,7 +42,7 @@ Scenarios
 ### auth.conf
 ### trusted\_applications.conf
 
-##customization
+## Customization
 
 ## Data sources
 
@@ -61,9 +61,8 @@ Scenarios
 
 #### LDAP
 
-one level
-
-two levels
+- one level
+- two levels
 
 #### VOOT
 
@@ -140,7 +139,6 @@ help
 - last
 
 ### CLI
-
 
 #### family management
 
