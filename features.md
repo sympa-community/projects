@@ -1,3 +1,5 @@
+`Note: this a work in progress`
+
 # Sympa Functionalities
 
 ## Authentication
